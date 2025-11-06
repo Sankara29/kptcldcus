@@ -1,0 +1,43 @@
+// @page {
+//     size: 21cm 29.7cm;
+//     margin: 30mm 45mm 30mm 45mm;
+// }
+// @media print {
+//     html, body{
+//         width: 21cm;
+//         height: 29.7cm;
+//    } 
+// }
+.a4-card {
+    // table{
+    //     border: 1px;
+    // }
+    // margin-left:25px;
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    // margin: 0 auto; /* Center the card horizontally */
+    // margin: 55px;
+    padding: 20px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    background-color: #fff;
+  }
+
+  .modalsNew {
+    // table{
+    //     border: 1px;
+    // }
+    // margin-left:25px;
+    width: 230mm; /* A4 width */
+    // height: 310mm; /* A4 height */
+    // // margin: 0 auto; /* Center the card horizontally */
+    // // margin: 55px;
+    // padding: 20px;
+    // // border: 1px solid #000;
+    // box-sizing: border-box;
+    // font-family: Arial, sans-serif;
+    // font-size: 10px;
+    // background-color: #fff;
+  }

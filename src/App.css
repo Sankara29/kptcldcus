@@ -1,0 +1,58 @@
+.ag-theme-alpine ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  .ag-theme-alpine ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+  
+  .ag-theme-alpine ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .ag-theme-alpine ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Optional: Customize AG Grid headers */
+  .ag-theme-alpine .ag-header-cell-label {
+    font-weight: bold;
+    color: #001737;
+    font-size: 13px;
+  }
+  
+  /* Optional: Customize cell padding */
+  .ag-theme-alpine .ag-cell {
+    padding: 6px;
+  }
+
+  .wrap-header .ag-header-cell-label {
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.2; /* Optional for compact headers */
+  }
+
+  /* .highlight-glow {
+    border: 2px solid #00c2ff !important;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00c2ff;
+    animation: pulseGlow 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 10px #00c2ff;
+    }
+    50% {
+      box-shadow: 0 0 20px #00c2ff;
+    }
+    100% {
+      box-shadow: 0 0 10px #00c2ff;
+    }
+  } */
+    .increases-width{
+    max-width: 93% !important;  /* or any value like 1000px, etc. */
+    width: 90% !important;
+  }

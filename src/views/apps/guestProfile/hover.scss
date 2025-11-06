@@ -1,0 +1,11 @@
+.hoverUnderline{
+    padding-left: 10%;
+    cursor: pointer;
+    background: none;
+    // color: white;
+}
+
+.hoverUnderline:hover{
+    color: #0062F4;
+    text-decoration: underline;
+}

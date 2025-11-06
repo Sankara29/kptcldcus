@@ -1,0 +1,163 @@
+// // ================================================================================================
+// //  File Name: app-invoice-print.scss
+// //  Description: Invoice Layout page layouts SCSS.
+// //  ----------------------------------------------------------------------------------------------
+// //  Item Name: Vuexy HTML Admin Template
+// //  Version: 1.0
+// //  Author: PIXINVENT
+// //  Author URL: http://www.themeforest.net/user/pixinvent
+// // ================================================================================================
+
+@import '../bootstrap-extended/include'; // Bootstrap includes
+
+html,
+body {
+  background: $white !important;
+  // padding-right: 250px;
+  // margin-right: 200px;
+
+}
+
+// .p-class{
+//     line-height: '80%';
+//     text-align: 'center';
+//     font-size: '13px';
+// }
+
+
+
+// .paragraph{
+//   font-weight: '400';
+//   font-size: '14px';
+//   padding-left:'60px';
+// }
+
+
+.invoice-print {
+  min-width: 768px !important;
+  font-size: 12px !important;
+
+  .invoice-date-wrapper {
+    display: flex;
+    // align-items: center;
+
+    .invoice-date-title {
+      width: 8rem;
+    }
+  }
+
+  i,  svg {
+    fill: $body-color !important;
+  }
+
+  .invoice-total-wrapper {
+    width: 100%;
+    max-width: 152rem;
+    .invoice-total-item {
+      display: flex;
+      // align-items: center;
+      justify-content: space-between;
+      .invoice-total-title {
+        // width: 92px;
+        margin-bottom: 0.35rem;
+      }
+      .invoice-total-amount {
+        margin-bottom: 0.35rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.invoice-print * {
+  border-color: rgba($color: $black, $alpha: 0.5) !important;
+  color: black !important;
+}
+
+// style for print screen
+@media print {
+  html,
+  body {
+    width: 210mm;
+  }
+  // .invoice-print {
+  //   padding: 0px !important;
+  // }
+  // .invoice-header {
+  //   margin-bottom: 3rem;
+  //   // padding-right: 5rem;
+  //   flex-direction: row !important;
+  //   border-bottom: 1px solid $border-color;
+  // }
+
+  // .table-responsive {
+  //   overflow: visible;
+
+  //   table {
+  //     table-layout: fixed;
+  //     th.ps-4,
+  //     td.ps-4 {
+  //       width: 100%;
+  //       padding-left: 0.5rem !important;
+        
+  //     }
+
+  //     p {
+  //       word-wrap: break-word;
+  //       overflow: hidden;
+  //       white-space: nowrap;
+  //       text-overflow: ellipsis;
+  //     }
+  //   }
+  // }
+  // hr {
+  //   display: none;
+  // }
+  // .invoice-sales-total-wrapper {
+  //   margin-bottom: 1rem;
+  // }
+}
+
+
+// @media print {
+//   body{
+//       width: 21cm;
+//       height: 29.7cm;
+//       margin: 30mm 45mm 30mm 45mm; 
+//       /* change the margins as you want them to be. */
+//  } 
+// }
+
+
+.receiptContent{
+  font-weight: 400 ;
+  font-size : 14px;
+  padding-left: 60px;
+}
+
+.receiptHeader{
+  line-height: 80%;
+  text-align: center;
+  font-size: 13px;
+}
+
+.registrationCard_underline{
+  border-bottom:1px solid;
+  color:  #575b63;
+}
+
+.ebill__body_td{
+  font-weight: bold;
+  text-align: left;
+}
+
+.ebill__th{
+  text-align: left;
+  border: 1px solid;
+  color: black;
+}
+
+.ebill_p{
+  line-height: 80%;
+  text-align: center;
+}
