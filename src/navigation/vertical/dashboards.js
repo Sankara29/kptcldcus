@@ -10,35 +10,37 @@ export default [
 
 
   //Front desk Tab
+  // {
+  //   id: 'ifsurvey',
+  //   title: 'Dashboard',
+  //   icon: <Monitor size={12} />,
+  //   navLink: '/dashboard/Dcu'
+  // },
+  // {
+  //   id: "gettimet",
+  //   title: "gettime-dcu",
+  //   icon: <Circle size={12} />,
+  //   navLink: "/dashboard/gettimes-dcu"
+  // },
+  // {
+  //   id: "nodelist",
+  //   title: "nodelist",
+  //   icon: <Circle size={12} />,
+  //   navLink: "/dashboard/node_list"
+  // }, 
   {
-    id: 'ifsurvey',
-    title: 'Dashboard',
-    icon: <Monitor size={12} />,
-    navLink: '/dashboard/Dcu'
+    id: "customer",
+    title: "IPP Consumers",
+    icon: <Circle size={12} />,
+    navLink: "/dashboard/customer"
   },
   {
-    id: "gettimet",
-    title: "gettime-dcu",
+    id: "ondemandlist",
+    title: "ON-Demand Commands",
     icon: <Circle size={12} />,
-    navLink: "/dashboard/gettimes-dcu"
+    navLink: "/dashboard/ondemandlist"
   },
   {
-    id: "nodelist",
-    title: "nodelist",
-    icon: <Circle size={12} />,
-    navLink: "/dashboard/node_list"
-  }, {
-    id: "dcu",
-    title: "gendcuV1-007",
-    icon: <Circle size={12} />,
-    navLink: "/dashboard/gendcu"
-  }
-  , {
-    id: "dcu",
-    title: "gendcuV2-004",
-    icon: <Circle size={12} />,
-    navLink: "/dashboard/gendcuV2"
-  }, {
     id: 'ConfigDcu',
     title: 'Config DCU',
     icon: <Settings size={12} />,
@@ -55,6 +57,29 @@ export default [
         icon: <Circle size={12} />,
         navLink: "/dashboard/addport"
       }]
+  }, {
+    id: 'dcu Versions',
+    title: 'DCU Versions',
+    icon: <Activity size={12} />,
+    children: [
+      {
+        id: "dcu",
+        title: "gendcuV1-007",
+        icon: <Circle size={12} />,
+        navLink: "/dashboard/gendcu"
+      }
+      , {
+        id: "dcu",
+        title: "gendcuV2-004",
+        icon: <Circle size={12} />,
+        navLink: "/dashboard/gendcuV2"
+      }, {
+        id: "dcu",
+        title: "NSDCU-009",
+        icon: <Circle size={12} />,
+        navLink: "/dashboard/gendcuV3"
+      },
+    ]
   }
 
 

@@ -8,7 +8,10 @@ const Gettime = lazy(() => import("../../views/dashboard/Gettime/index.js"))
 const AddGendcu = lazy(() => import("../../views/dashboard/AddDCU/index.js"))
 const Gendcu = lazy(() => import("../../views/dashboard/gendcu/index.js"))
 const GendcuV2 = lazy(() => import("../../views/dashboard/gendcuV2/index.js"))
+const GendcuV3 = lazy(() => import("../../views/dashboard/gendcuV3/index.js"))
 const AddDCUPort = lazy(() => import("../../views/dashboard/AddPort/index.jsx"))
+const Customer = lazy(() => import("../../views/dashboard/Customer/index.jsx"))
+const OnDemand = lazy(() => import("../../views/dashboard/Customer/Ondemandlist.js"))
 //Nayana
 const DashboardRoutes = [
 
@@ -40,7 +43,10 @@ const DashboardRoutes = [
     path: "/dashboard/gendcuV2",
     element: <GendcuV2 />
   },
-
+  {
+    path: "/dashboard/gendcuV3",
+    element: <GendcuV3 />
+  },
   {
     path: "/dashboard/addgendcu",
     element: <AddGendcu />
@@ -48,6 +54,12 @@ const DashboardRoutes = [
   {
     path: "/dashboard/addport",
     element: <AddDCUPort />
+  }, {
+    path: "/dashboard/customer",
+    element: <Customer />
+  }, {
+    path: "/dashboard/ondemandlist",
+    element: <OnDemand />
   }
 ];
 

@@ -45,9 +45,9 @@ const NodeListV2 = () => {
         try {
             // --- Generate keys ---
             const keys = [];
-            for (let i = 1; i <= 200; i++) {
+            for (let i = 1; i <= 600; i++) {
                 const id = String(i).padStart(5, '0');
-                keys.push(`v_NSDCU4${id}`);
+                keys.push(`v_NSDCU9${id}`);
             }
 
             // --- Fetch TM values ---
@@ -68,12 +68,12 @@ const NodeListV2 = () => {
             }
 
             // --- Fetch nodes-with-meters ---
-            const nodeRes = await fetch('https://testpms.ms-tech.in/v23/nodes-with-meters-dcu2');
+            const nodeRes = await fetch('https://testpms.ms-tech.in/v23/nodes-with-meters-nsdcu');
             if (!nodeRes.ok) throw new Error(nodeRes.statusText);
             const nodeJson = await nodeRes.json();
             let nodes = nodeJson.data || [];
 
-            const res = await fetch('https://testpms.ms-tech.in/v23/node-status-dcu2');
+            const res = await fetch('https://testpms.ms-tech.in/v23/node-status-nsdcu');
             if (!res.ok) throw new Error(res.statusText);
             const json = await res.json() || {};
             const commData = json.data || []
@@ -102,7 +102,7 @@ const NodeListV2 = () => {
 
     const fetchCommunicationData = async () => {
         try {
-            const res = await fetch('https://testpms.ms-tech.in/v23/node-status-dcu2');
+            const res = await fetch('https://testpms.ms-tech.in/v23/node-status-nsdcu');
             if (!res.ok) throw new Error(res.statusText);
             const json = await res.json();
             setCommunicationData(json);
@@ -256,7 +256,7 @@ const NodeListV2 = () => {
         if (!data || data.length === 0) return [];
 
         const cols = [
-            { headerName: 'Node', field: 'node_id', flex: 3 }, { headerName: "version", field: "cv", flex: 1 },
+            { headerName: 'Node', field: 'node_id', flex: 3 },
             {
                 headerName: 'gettime',
                 field: 'tm',
@@ -288,57 +288,7 @@ const NodeListV2 = () => {
                     }
                 }
             },
-            //installed_at
-            // {
-            //     headerName: 'installed_at',
-            //     field: 'installed_at',
-            //     flex: 2,
-            //     valueFormatter: (params) => {
-            //         const value = params.value;
-            //         if (!value) return 'Not Communicated';
 
-            //         let date = dayjs(value, 'YYYY-MM-DD HH:mm:ss', true);
-            //         if (!date.isValid()) {
-            //             date = dayjs(value, 'YYYY-MM-DD', true);
-            //         }
-
-            //         return date.isValid() ? date.format('MMM-DD-YY') : 'Not Communicated';
-            //     },
-            //     exportValueGetter: (params) => {
-            //         const value = params.value;
-            //         if (!value) return 'Not Communicated';
-
-            //         let date = dayjs(value, 'YYYY-MM-DD HH:mm:ss', true);
-            //         if (!date.isValid()) {
-            //             date = dayjs(value, 'YYYY-MM-DD', true);
-            //         }
-
-            //         return date.isValid() ? date.format('YYYY-MM-DD') : 'Not Communicated';
-            //     },
-            //     filter: 'agDateColumnFilter',
-            //     filterParams: {
-            //         // filterOptions: ['equals', 'notEqual'],
-            //         suppressAndOrCondition: true,
-            //         browserDatePicker: true,
-            //         applyButton: true,
-            //         clearButton: true,
-            //         comparator: (filterDate, cellValue) => {
-            //             if (!cellValue) return -1;
-
-            //             let cellDate = dayjs(cellValue, 'YYYY-MM-DD HH:mm:ss', true);
-            //             if (!cellDate.isValid()) {
-            //                 cellDate = dayjs(cellValue, 'YYYY-MM-DD', true);
-            //             }
-
-            //             const fDate = dayjs(filterDate).startOf('day');
-
-            //             if (!cellDate.isValid() || !fDate.isValid()) return 0;
-            //             if (cellDate.isBefore(fDate)) return -1;
-            //             if (cellDate.isAfter(fDate)) return 1;
-            //             return 0;
-            //         }
-            //     }
-            // },
             {
                 headerName: 'installed_at',
                 field: 'installed_at',
@@ -516,7 +466,7 @@ const NodeListV2 = () => {
 
     return (
         <div className="container-fluid mt-3">
-            <h1 className="mb-3">Gen Dcu List</h1>
+            <h1 className="mb-3">NSDCU List</h1>
 
             {/* 🔍 Search bar */}
             <div className="d-flex align-items-center mb-3">

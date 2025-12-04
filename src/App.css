@@ -31,7 +31,7 @@
   .wrap-header .ag-header-cell-label {
     white-space: normal !important;
     text-align: center;
-    line-height: 1.2; /* Optional for compact headers */
+    line-height: 1.4; /* Optional for compact headers */
   }
 
   /* .highlight-glow {

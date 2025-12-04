@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import { FileText } from "react-feather";
+import ReportModal from './reportmodal';
 
 
 const NodeList = () => {
@@ -437,6 +438,76 @@ const NodeList = () => {
     };
     const date = dayjs().format('YYYY-MM-DD');
 
+    const partialNodes = data.filter((node) => {
+        const isToday =
+            dayjs(node.tm, "MM/DD/YY HH:mm:ss").format("MM/DD/YY") === todayDate;
+
+        const commNode = communicationData.data.find(
+            (c) => c.node_id === node.node_id
+        );
+
+        if (!commNode || !isToday) return false;
+
+        const meters = commNode.meters || [];
+        const hasSuccess = meters.some((m) => m.data_today === true || m.data_today === 1);
+        const hasFail = meters.some((m) => m.data_today === false || m.data_today === 0);
+
+        return hasSuccess && hasFail;
+    });
+
+    const partialCount = partialNodes.length;
+
+    const [reportModalOpen, setReportModalOpen] = useState(false);
+    const closeReportModal = () => {
+        setReportModalOpen(false);
+    }
+    // const generateReport = (from, to) => {
+    //     console.log("Generating report from:", from, "to:", to);
+    //     fetch(`https://testpms.ms-tech.in/v23/communication-report?start_date=${from}&end_date=${to}`)  
+    // };
+
+    const generateReport = async (from, to) => {
+        console.log("Generating report from:", from, "to:", to);
+
+        try {
+            const res = await fetch(
+                `https://testpms.ms-tech.in/v23/communication-report?start_date=${from}&end_date=${to}`,
+                {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/octet-stream",
+                    }
+                }
+            );
+
+            if (!res.ok) {
+                throw new Error("❌ Failed to download report");
+            }
+
+            // Convert the raw response data into a buffer
+            const buffer = await res.arrayBuffer();
+
+            // Create a Blob (browser-friendly buffer)
+            const blob = new Blob([buffer], { type: "application/octet-stream" });
+
+            // Create a download URL
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+
+            // OPTIONAL: If backend sends filename in header, fetch it
+            const fileName = res.headers.get("Content-Disposition")?.split("filename=")[1] || "report.xlsx";
+
+            link.download = fileName.replace(/"/g, "");
+            link.click();
+
+            URL.revokeObjectURL(link.href);
+            console.log("✅ Report downloaded");
+
+        } catch (error) {
+            console.error("Error generating report:", error);
+        }
+    };
+
 
     return (
         <div className="container-fluid mt-3">
@@ -447,11 +518,12 @@ const NodeList = () => {
                 {/* <Search size={18} style={{ marginRight: '8px' }} /> */}
                 <Input
                     type="text"
-                    placeholder="Search Node ID..."
+                    placeholder="Search Anything..."
                     value={searchText}
                     onChange={onSearchChange}
-                    style={{ maxWidth: '300px' }}
+                    style={{ maxWidth: '300px', marginRight: '10px' }}
                 />
+                <Button onClick={() => { setReportModalOpen(true) }}>Report</Button>
             </div>
 
             {/* Nodes Communication Summary */}
@@ -460,7 +532,9 @@ const NodeList = () => {
                 <div className="d-flex justify-content-between mt-2">
                     <span>Total Nodes: {totalNodes}</span>
                     <span>Today's Gettime: {todaysGettimeCount}</span>
-                    <span>Communicated: {communicatedNodes}</span>
+                    <span>Communicating dcu :{communicatedNodes + partialCount}</span>
+                    <span>Full Communicated: {communicatedNodes}</span>
+                    <span>Partical communication: {partialCount}</span>
                     <span>Success Rate: {successRate}%</span>
                     <span> DCU live : {dcualivecount}%</span>
                 </div>
@@ -819,7 +893,8 @@ const NodeList = () => {
                     <p className="text-center mt-3">No Data Found</p>
                 )}
             </div>
-
+            {/* First Modal: show meters with numbers */}
+            <ReportModal reportModalOpen={reportModalOpen} closeReportModal={closeReportModal} generateReport={generateReport} />
             {/* First Modal: show meters with numbers */}
             <Modal size="md" isOpen={modalMetersOpen} toggle={closeMetersModal}>
                 <ModalHeader toggle={closeMetersModal}>
